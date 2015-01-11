@@ -1,0 +1,17 @@
+{
+    "contents" : "## directory is a character string representing the directory where\n## you unpacked the power consumption data set, assuming you didn't \n## rename the folders.\n\nplotting <- function(directory) {\n  setwd(directory) \n  electric <- read.table(\"./exdata-data-household_power_consumption/household_power_consumption.txt\", header = TRUE, sep = \";\", na.strings = \"?\", nrows = 2880, skip = 66636)\n  colnames(electric) <- unlist(read.table(\"./exdata-data-household_power_consumption/household_power_consumption.txt\", sep = \";\", nrows = 1))\n  electric$Date <- as.Date(electric$Date, format = \"%d/%m/%Y\")\n  ##electric$Time <- strptime(electric$Time,\"%H:%M:%S\")\n  electric$DateTime <- as.POSIXct(with(electric, paste(Date,Time)), tz =\"GMT\")\n  \npng(filename = \"plot3.png\", width = 480, height = 480)\nwith(electric, {\n  plot(DateTime,Sub_metering_1, type = \"l\", xlab = \"\", ylab = \"Energy Sub metering\")\n  lines(DateTime, Sub_metering_2, col =\"red\")\n  lines(DateTime, Sub_metering_3, col = \"blue\")\n  legend(\"topright\", pch = 45, col = c(\"black\", \"red\", \"blue\"), legend = c(\"Sub_metering_1\", \"Sub_metering_2\", \"Sub_metering_3\"))\n} )\ndev.off()\n\n}\n",
+    "created" : 1421005349813.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1353576",
+    "id" : "AFF14E2A",
+    "lastKnownWriteTime" : 1421015511,
+    "path" : "~/R/Git/ExD/plot3.R",
+    "project_path" : "plot3.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

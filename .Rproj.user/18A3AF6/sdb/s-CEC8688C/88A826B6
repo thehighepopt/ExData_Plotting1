@@ -1,0 +1,17 @@
+{
+    "contents" : "## directory is a character string representing the directory where\n## you unpacked the power consumption data set, assuming you didn't \n## rename the folders.  \n\nplotting <- function(directory) {\nsetwd(directory) \nelectric <- read.table(\"./exdata-data-household_power_consumption/household_power_consumption.txt\", header = TRUE, sep = \";\", na.strings = \"?\", nrows = 2880, skip = 66636)\ncolnames(electric) <- unlist(read.table(\"./exdata-data-household_power_consumption/household_power_consumption.txt\", sep = \";\", nrows = 1))\nelectric$Date <- as.Date(electric$Date, format = \"%d/%m/%Y\")\n##electric$Time <- strptime(electric$Time,\"%H:%M:%S\")\nelectric$DateTime <- as.POSIXct(with(electric, paste(Date,Time)), tz =\"GMT\")\n\npng(filename = \"plot1.png\", width = 480, height = 480)\nhist(electric$Global_active_power, col = \"red\", main = \"Global Active Power\", xlab = \"Global Active Power (kilowatts)\")\ndev.off()\n}\n\n\n",
+    "created" : 1421005301341.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2788556961",
+    "id" : "88A826B6",
+    "lastKnownWriteTime" : 1421015493,
+    "path" : "~/R/Git/ExD/plot1.R",
+    "project_path" : "plot1.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,16 @@
+{
+    "contents" : "electric <- read.table(\"C:/Users/Phil/Documents/R/ExploratoryDA/exdata-data-household_power_consumption/household_power_consumption.txt\", header = TRUE, sep = \";\", na.strings = \"?\", nrows = 2880, skip = 66636)\ncolnames(electric) <- unlist(read.table(\"C:/Users/Phil/Documents/R/ExploratoryDA/exdata-data-household_power_consumption/household_power_consumption.txt\", sep = \";\", nrows = 1))\nelectric$Date <- as.Date(electric$Date, format = \"%d/%m/%Y\")\nelectric$Time <- strptime(electric$Time,\"%H:%M:%S\")\n\n",
+    "created" : 1421005422464.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3095408919",
+    "id" : "2A1CC396",
+    "lastKnownWriteTime" : 1421006297,
+    "path" : "~/R/ExploratoryDA/Project1.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
